@@ -1,0 +1,56 @@
+This file contains message digests of all files listed in MANIFEST,
+signed via the Module::Signature module, version 0.70.
+
+To verify the content in this distribution, first make sure you have
+Module::Signature installed, then type:
+
+    % cpansign -v
+
+It will check each file's integrity, as well as the signature's
+validity.  If "==> Signature verified OK! <==" is not displayed,
+the distribution may already have been compromised, and you should
+not run its Makefile.PL or Build.PL.
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+SHA1 f983c18fdb491c4b733235d54e8ca7563b67a6a3 CONTRIBUTING
+SHA1 a2b70947215317b8e24d7f8fe0ef579742be832b COPYRIGHT
+SHA1 9e307a5415ca4fa0a76a08bd7236f23f15544ea8 CREDITS
+SHA1 537f85f2cc8c6b4fba5fc92f8a0fc5ea0c726bab Changes
+SHA1 937d452c5c4069f4cda9ffaf45a33f1eb5f060e8 LICENSE
+SHA1 85e047739f9b19d87afc84042f6382f0f258f994 MANIFEST
+SHA1 ccadd6c33da5e529dab612ab66e82dadaa97ce23 META.ttl
+SHA1 eafdeab87daf6c821ba4abbf96ed8c0f67181c49 META.yml
+SHA1 5847ba4f788090acc163ed1eb21b34ec3f2ce244 Makefile.PL
+SHA1 a9b3a0a85b67d6691a10dbc410b8c2848ae950a6 README
+SHA1 06c410f05488c1612ed66b06d3a86b2580581e4a inc/Module/AutoInstall.pm
+SHA1 8a924add836b60fb23b25c8506d45945e02f42f4 inc/Module/Install.pm
+SHA1 61ab1dd37e33ddbe155907ce51df8a3e56ac8bbf inc/Module/Install/AutoInstall.pm
+SHA1 c04f94f91fa97b9f8cfb5a36071098ab0e6c78e3 inc/Module/Install/AutoManifest.pm
+SHA1 2d0fad3bf255f8c1e7e1e34eafccc4f595603ddc inc/Module/Install/Base.pm
+SHA1 f0e01fff7d73cd145fbf22331579918d4628ddb0 inc/Module/Install/Can.pm
+SHA1 7328966e4fda0c8451a6d3850704da0b84ac1540 inc/Module/Install/Fetch.pm
+SHA1 66d3d335a03492583a3be121a7d888f63f08412c inc/Module/Install/Include.pm
+SHA1 b62ca5e2d58fa66766ccf4d64574f9e1a2250b34 inc/Module/Install/Makefile.pm
+SHA1 1aa925be410bb3bfcd84a16985921f66073cc1d2 inc/Module/Install/Metadata.pm
+SHA1 3b9281ddf7dd6d6f5de0a9642c69333023193c80 inc/Module/Install/Package.pm
+SHA1 41f76ff6b39368a65da86377e43b34bacc2fb0eb inc/Module/Install/TrustMetaYml.pm
+SHA1 e4196994fa75e98bdfa2be0bdeeffef66de88171 inc/Module/Install/Win32.pm
+SHA1 c3a6d0d5b84feb3280622e9599e86247d58b0d18 inc/Module/Install/WriteAll.pm
+SHA1 26d58a041cd6b3d21db98b32e8fd1841aae21204 inc/Module/Package.pm
+SHA1 5a2f84a7a82eee0d1e5ed3628fe503a608efc10f inc/Module/Package/Dist/RDF.pm
+SHA1 feb933cefe2e3762e8322bd6071a2499f3440da1 inc/YAML/Tiny.pm
+SHA1 bce2c0fbd5ddcae144a3e0f2ba87e86277bf4dd7 lib/Type/Tie.pm
+SHA1 e7f742d7359c44fdf3a011968c138d96841d8f31 meta/changes.pret
+SHA1 7e6243fb2441e5b22aabd11f6ab5fbf1b945f015 meta/doap.pret
+SHA1 458d8f487890c707841b7cd6d56efeb74c89de3e meta/makefile.pret
+SHA1 a151cff74b5f29c00381a14d4ec8726e3763b6b2 meta/people.pret
+SHA1 04ee0b4bc5efe56dc2f7cff5da144716e2e3ea92 t/01basic.t
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.11 (GNU/Linux)
+
+iEYEARECAAYFAlGHqtIACgkQzr+BKGoqfTkf8wCeNiWiYujsMlM5sndZAqtW9Fxw
+cncAn2ZIQrjDQTENySDGwCdiAGqTcrN8
+=tRAT
+-----END PGP SIGNATURE-----
