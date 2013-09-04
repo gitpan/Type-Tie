@@ -1,0 +1,84 @@
+{
+   "abstract" : "tie a variable to a type constraint",
+   "author" : [
+      "Toby Inkster (TOBYINK) <tobyink@cpan.org>"
+   ],
+   "dynamic_config" : 0,
+   "generated_by" : "Dist::Inkt::Profile::TOBYINK version 0.007, CPAN::Meta::Converter version 2.120921",
+   "keywords" : [],
+   "license" : [
+      "perl"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "Type-Tie",
+   "no_index" : {
+      "directory" : [
+         "eg",
+         "examples",
+         "inc",
+         "t",
+         "xt"
+      ]
+   },
+   "prereqs" : {
+      "configure" : {
+         "requires" : {
+            "ExtUtils::MakeMaker" : "6.17"
+         }
+      },
+      "runtime" : {
+         "requires" : {
+            "Exporter::TypeTiny" : "0.004",
+            "Hash::FieldHash" : 0
+         }
+      },
+      "test" : {
+         "requires" : {
+            "Test::Fatal" : 0,
+            "Types::Standard" : "0.004"
+         }
+      }
+   },
+   "provides" : {
+      "Type::Tie" : {
+         "file" : "lib/Type/Tie.pm",
+         "version" : "0.003"
+      },
+      "Type::Tie::ARRAY" : {
+         "file" : "lib/Type/Tie.pm",
+         "version" : "0.003"
+      },
+      "Type::Tie::BASE" : {
+         "file" : "lib/Type/Tie.pm",
+         "version" : "0.003"
+      },
+      "Type::Tie::HASH" : {
+         "file" : "lib/Type/Tie.pm",
+         "version" : "0.003"
+      },
+      "Type::Tie::SCALAR" : {
+         "file" : "lib/Type/Tie.pm",
+         "version" : "0.003"
+      }
+   },
+   "release_status" : "stable",
+   "resources" : {
+      "X_identifier" : "http://purl.org/NET/cpan-uri/dist/Type-Tie/project",
+      "bugtracker" : {
+         "web" : "http://rt.cpan.org/Dist/Display.html?Queue=Type-Tie"
+      },
+      "homepage" : "https://metacpan.org/release/Type-Tie",
+      "license" : [
+         "http://dev.perl.org/licenses/"
+      ],
+      "repository" : {
+         "type" : "git",
+         "web" : "https://github.com/tobyink/p5-type-tie"
+      }
+   },
+   "version" : "0.003",
+   "x_provides_scripts" : {}
+}

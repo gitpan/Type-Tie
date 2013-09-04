@@ -13,7 +13,7 @@ BEGIN
 {
 	package Type::Tie;
 	our $AUTHORITY = 'cpan:TOBYINK';
-	our $VERSION   = '0.002';
+	our $VERSION   = '0.003';
 	
 	use base "Exporter::TypeTiny";
 	our @EXPORT = qw(ttie);
@@ -45,7 +45,7 @@ BEGIN
 {
 	package Type::Tie::BASE;
 	our $AUTHORITY = 'cpan:TOBYINK';
-	our $VERSION   = '0.002';
+	our $VERSION   = '0.003';
 	
 	use Hash::FieldHash qw(fieldhash);
 	fieldhash(my %TYPE);
@@ -82,12 +82,18 @@ BEGIN
 	
 	sub store_value
 	{
-		my $self = shift;
-		my $type = $TYPE{$self};
-		my $val  = $COERCE{$self} ? $type->coerce($_[0]) : $_[0];
-		Carp::croak(sprintf "%s does not meet type constraint $type", _dd($_[0]))
-			unless $type->check($val);
-		return $val;
+		my $self   = shift;
+		my $type   = $TYPE{$self};
+		my $coerce = $COERCE{$self};
+		
+		my @vals = map {
+			my $val = $coerce ? $type->coerce($_) : $_;
+			Carp::croak(sprintf "%s does not meet type constraint $type", _dd($_))
+				unless $type->check($val);
+			$val;
+		} @_;
+		
+		wantarray ? @vals : $vals[0];
 	}
 };
 
@@ -95,7 +101,7 @@ BEGIN
 {
 	package Type::Tie::ARRAY;
 	our $AUTHORITY = 'cpan:TOBYINK';
-	our $VERSION   = '0.002';
+	our $VERSION   = '0.003';
 	
 	use base qw( Tie::StdArray Type::Tie::BASE );
 	
@@ -116,13 +122,20 @@ BEGIN
 	sub PUSH
 	{
 		my $self = shift;
-		$self->SUPER::PUSH(map $self->store_value($_), @_);
+		$self->SUPER::PUSH( $self->store_value(@_) );
 	}
 	
 	sub UNSHIFT
 	{
 		my $self = shift;
-		$self->SUPER::UNSHIFT(map $self->store_value($_), @_);
+		$self->SUPER::UNSHIFT( $self->store_value(@_) );
+	}
+
+	sub SPLICE
+	{
+		my $self = shift;
+		my ($start, $len, @rest) = @_;
+		$self->SUPER::SPLICE($start, $len, $self->store_value(@rest) );
 	}
 };
 
@@ -130,7 +143,7 @@ BEGIN
 {
 	package Type::Tie::HASH;
 	our $AUTHORITY = 'cpan:TOBYINK';
-	our $VERSION   = '0.002';
+	our $VERSION   = '0.003';
 	
 	use base qw( Tie::StdHash Type::Tie::BASE );
 	
@@ -153,7 +166,7 @@ BEGIN
 {
 	package Type::Tie::SCALAR;
 	our $AUTHORITY = 'cpan:TOBYINK';
-	our $VERSION   = '0.002';
+	our $VERSION   = '0.003';
 	
 	use base qw( Tie::StdScalar Type::Tie::BASE );
 	
