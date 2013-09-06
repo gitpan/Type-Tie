@@ -13,7 +13,7 @@ BEGIN
 {
 	package Type::Tie;
 	our $AUTHORITY = 'cpan:TOBYINK';
-	our $VERSION   = '0.003';
+	our $VERSION   = '0.004';
 	
 	use base "Exporter::TypeTiny";
 	our @EXPORT = qw(ttie);
@@ -45,17 +45,38 @@ BEGIN
 {
 	package Type::Tie::BASE;
 	our $AUTHORITY = 'cpan:TOBYINK';
-	our $VERSION   = '0.003';
+	our $VERSION   = '0.004';
 	
 	use Hash::FieldHash qw(fieldhash);
 	fieldhash(my %TYPE);
 	fieldhash(my %COERCE);
+	fieldhash(my %CHECK);
 	
 	sub _set_type
 	{
 		my $self = shift;
-		$COERCE{$self} = $_[0]->can("has_coercion") && $_[0]->can("coerce") && $_[0]->has_coercion;
-		$TYPE{$self}   = $_[0];
+		my $type = $_[0];
+		
+		$TYPE{$self} = $type;
+		
+		if ($type->isa('Type::Tiny'))
+		{
+			$CHECK{$self} = $type->compiled_check;
+			$COERCE{$self} = undef;
+			$COERCE{$self} = $type->coercion->compiled_coercion
+				if $type->has_coercion;
+		}
+		else
+		{
+			$CHECK{$self} = $type->can('compiled_check')
+				? $type->compiled_check
+				: sub { $type->check($_[0]) };
+			$COERCE{$self} = undef;
+			$COERCE{$self} = sub { $type->coerce($_[0]) }
+				if $type->can("has_coercion")
+				&& $type->can("coerce")
+				&& $type->has_coercion;
+		}
 	}
 	
 	sub type
@@ -80,18 +101,18 @@ BEGIN
 		}
 	}
 	
-	sub store_value
+	sub coerce_and_check_value
 	{
 		my $self   = shift;
-		my $type   = $TYPE{$self};
+		my $check  = $CHECK{$self};
 		my $coerce = $COERCE{$self};
 		
 		my @vals = map {
-			my $val = $coerce ? $type->coerce($_) : $_;
-			Carp::croak(sprintf "%s does not meet type constraint $type", _dd($_))
-				unless $type->check($val);
+			my $val = $coerce ? $coerce->($_) : $_;
+			Carp::croak(sprintf "%s does not meet type constraint %s", _dd($_), $TYPE{$self})
+				unless $check->($val);
 			$val;
-		} @_;
+		} (my @cp = @_);  # need to copy @_ for Perl < 5.14
 		
 		wantarray ? @vals : $vals[0];
 	}
@@ -101,7 +122,7 @@ BEGIN
 {
 	package Type::Tie::ARRAY;
 	our $AUTHORITY = 'cpan:TOBYINK';
-	our $VERSION   = '0.003';
+	our $VERSION   = '0.004';
 	
 	use base qw( Tie::StdArray Type::Tie::BASE );
 	
@@ -116,26 +137,26 @@ BEGIN
 	sub STORE
 	{
 		my $self = shift;
-		$self->SUPER::STORE($_[0], $self->store_value($_[1]));
+		$self->SUPER::STORE($_[0], $self->coerce_and_check_value($_[1]));
 	}
 	
 	sub PUSH
 	{
 		my $self = shift;
-		$self->SUPER::PUSH( $self->store_value(@_) );
+		$self->SUPER::PUSH( $self->coerce_and_check_value(@_) );
 	}
 	
 	sub UNSHIFT
 	{
 		my $self = shift;
-		$self->SUPER::UNSHIFT( $self->store_value(@_) );
+		$self->SUPER::UNSHIFT( $self->coerce_and_check_value(@_) );
 	}
 
 	sub SPLICE
 	{
 		my $self = shift;
 		my ($start, $len, @rest) = @_;
-		$self->SUPER::SPLICE($start, $len, $self->store_value(@rest) );
+		$self->SUPER::SPLICE($start, $len, $self->coerce_and_check_value(@rest) );
 	}
 };
 
@@ -143,7 +164,7 @@ BEGIN
 {
 	package Type::Tie::HASH;
 	our $AUTHORITY = 'cpan:TOBYINK';
-	our $VERSION   = '0.003';
+	our $VERSION   = '0.004';
 	
 	use base qw( Tie::StdHash Type::Tie::BASE );
 	
@@ -158,7 +179,7 @@ BEGIN
 	sub STORE
 	{
 		my $self = shift;
-		$self->SUPER::STORE($_[0], $self->store_value($_[1]));
+		$self->SUPER::STORE($_[0], $self->coerce_and_check_value($_[1]));
 	}
 };
 
@@ -166,7 +187,7 @@ BEGIN
 {
 	package Type::Tie::SCALAR;
 	our $AUTHORITY = 'cpan:TOBYINK';
-	our $VERSION   = '0.003';
+	our $VERSION   = '0.004';
 	
 	use base qw( Tie::StdScalar Type::Tie::BASE );
 	
@@ -181,7 +202,7 @@ BEGIN
 	sub STORE
 	{
 		my $self = shift;
-		$self->SUPER::STORE( $self->store_value($_[0]) );
+		$self->SUPER::STORE( $self->coerce_and_check_value($_[0]) );
 	}
 };
 

@@ -4,11 +4,12 @@ author:
   - 'Toby Inkster (TOBYINK) <tobyink@cpan.org>'
 build_requires:
   Test::Fatal: 0
+  Test::Requires: 0
   Types::Standard: 0.004
 configure_requires:
   ExtUtils::MakeMaker: 6.17
 dynamic_config: 0
-generated_by: 'Dist::Inkt::Profile::TOBYINK version 0.007, CPAN::Meta::Converter version 2.120921'
+generated_by: 'Dist::Inkt::Profile::TOBYINK version 0.009, CPAN::Meta::Converter version 2.120921'
 keywords: []
 license: unknown
 meta-spec:
@@ -25,19 +26,19 @@ no_index:
 provides:
   Type::Tie:
     file: lib/Type/Tie.pm
-    version: 0.003
+    version: 0.004
   Type::Tie::ARRAY:
     file: lib/Type/Tie.pm
-    version: 0.003
+    version: 0.004
   Type::Tie::BASE:
     file: lib/Type/Tie.pm
-    version: 0.003
+    version: 0.004
   Type::Tie::HASH:
     file: lib/Type/Tie.pm
-    version: 0.003
+    version: 0.004
   Type::Tie::SCALAR:
     file: lib/Type/Tie.pm
-    version: 0.003
+    version: 0.004
 requires:
   Exporter::TypeTiny: 0.004
   Hash::FieldHash: 0
@@ -47,5 +48,4 @@ resources:
   homepage: https://metacpan.org/release/Type-Tie
   license: http://dev.perl.org/licenses/
   repository: https://github.com/tobyink/p5-type-tie
-version: 0.003
-x_provides_scripts: {}
+version: 0.004
