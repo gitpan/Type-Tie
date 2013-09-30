@@ -4,10 +4,10 @@
       "Toby Inkster (TOBYINK) <tobyink@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Inkt::Profile::TOBYINK version 0.009, CPAN::Meta::Converter version 2.120921",
+   "generated_by" : "Dist::Inkt::Profile::TOBYINK version 0.013, CPAN::Meta::Converter version 2.120921",
    "keywords" : [],
    "license" : [
-      "perl"
+      "perl_5"
    ],
    "meta-spec" : {
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
@@ -23,6 +23,7 @@
          "xt"
       ]
    },
+   "optional_features" : {},
    "prereqs" : {
       "configure" : {
          "requires" : {
@@ -31,7 +32,7 @@
       },
       "runtime" : {
          "requires" : {
-            "Exporter::TypeTiny" : "0.004",
+            "Exporter::Tiny" : "0.026",
             "Hash::FieldHash" : "0"
          }
       },
@@ -49,23 +50,23 @@
    "provides" : {
       "Type::Tie" : {
          "file" : "lib/Type/Tie.pm",
-         "version" : "0.004"
+         "version" : "0.005"
       },
       "Type::Tie::ARRAY" : {
          "file" : "lib/Type/Tie.pm",
-         "version" : "0.004"
+         "version" : "0.005"
       },
       "Type::Tie::BASE" : {
          "file" : "lib/Type/Tie.pm",
-         "version" : "0.004"
+         "version" : "0.005"
       },
       "Type::Tie::HASH" : {
          "file" : "lib/Type/Tie.pm",
-         "version" : "0.004"
+         "version" : "0.005"
       },
       "Type::Tie::SCALAR" : {
          "file" : "lib/Type/Tie.pm",
-         "version" : "0.004"
+         "version" : "0.005"
       }
    },
    "release_status" : "stable",
@@ -83,5 +84,5 @@
          "web" : "https://github.com/tobyink/p5-type-tie"
       }
    },
-   "version" : "0.004"
+   "version" : "0.005"
 }

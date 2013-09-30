@@ -7,7 +7,7 @@ my $meta = {
   "abstract"       => "tie a variable to a type constraint",
   "author"         => ["Toby Inkster (TOBYINK) <tobyink\@cpan.org>"],
   "dynamic_config" => 0,
-  "generated_by"   => "Dist::Inkt::Profile::TOBYINK version 0.009, CPAN::Meta::Converter version 2.120921",
+  "generated_by"   => "Dist::Inkt::Profile::TOBYINK version 0.013, CPAN::Meta::Converter version 2.120921",
   "keywords"       => [],
   "license"        => ["perl_5"],
   "meta-spec"      => {
@@ -19,7 +19,7 @@ my $meta = {
   "prereqs"        => {
                         configure => { requires => { "ExtUtils::MakeMaker" => 6.17 } },
                         runtime => {
-                          requires => { "Exporter::TypeTiny" => 0.004, "Hash::FieldHash" => 0 },
+                          requires => { "Exporter::Tiny" => 0.026, "Hash::FieldHash" => 0 },
                         },
                         test => {
                           recommends => { "MooseX::Types::Moose" => 0 },
@@ -27,11 +27,11 @@ my $meta = {
                         },
                       },
   "provides"       => {
-                        "Type::Tie"         => { file => "lib/Type/Tie.pm", version => 0.004 },
-                        "Type::Tie::ARRAY"  => { file => "lib/Type/Tie.pm", version => 0.004 },
-                        "Type::Tie::BASE"   => { file => "lib/Type/Tie.pm", version => 0.004 },
-                        "Type::Tie::HASH"   => { file => "lib/Type/Tie.pm", version => 0.004 },
-                        "Type::Tie::SCALAR" => { file => "lib/Type/Tie.pm", version => 0.004 },
+                        "Type::Tie"         => { file => "lib/Type/Tie.pm", version => 0.005 },
+                        "Type::Tie::ARRAY"  => { file => "lib/Type/Tie.pm", version => 0.005 },
+                        "Type::Tie::BASE"   => { file => "lib/Type/Tie.pm", version => 0.005 },
+                        "Type::Tie::HASH"   => { file => "lib/Type/Tie.pm", version => 0.005 },
+                        "Type::Tie::SCALAR" => { file => "lib/Type/Tie.pm", version => 0.005 },
                       },
   "release_status" => "stable",
   "resources"      => {
@@ -41,7 +41,7 @@ my $meta = {
                         repository   => { type => "git", web => "https://github.com/tobyink/p5-type-tie" },
                         X_identifier => "http://purl.org/NET/cpan-uri/dist/Type-Tie/project",
                       },
-  "version"        => 0.004,
+  "version"        => 0.005,
 };
 
 my %dynamic_config;
@@ -65,6 +65,7 @@ sub deps
 	{
 		for my $dep (keys %{$meta->{prereqs}{$stage}{requires}})
 		{
+			next if $dep eq 'perl';
 			my $ver = $meta->{prereqs}{$stage}{requires}{$dep};
 			$r{$dep} = $ver if !exists($r{$dep}) || $ver >= $r{$dep};
 		}
@@ -97,16 +98,19 @@ else
 }
 
 {
-	my $minperl = delete $WriteMakefileArgs{PREREQ_PM}{perl};
-	exists($WriteMakefileArgs{$_}) && delete($WriteMakefileArgs{$_}{perl})
-		for qw(BUILD_REQUIRES TEST_REQUIRES CONFIGURE_REQUIRES);
-	if ($minperl and $EUMM >= 6.48)
+	my ($minperl) = reverse sort(
+		grep defined && /^[0-9]+(\.[0-9]+)?$/,
+		map $meta->{prereqs}{$_}{requires}{perl},
+		qw( configure build runtime )
+	);
+	
+	if (defined($minperl))
 	{
-		$WriteMakefileArgs{MIN_PERL_VERSION} ||= $minperl;
-	}
-	elsif ($minperl)
-	{
-		die "Need Perl >= $minperl" unless $] >= $minperl;
+		die "Installing $meta->{name} requires Perl >= $minperl"
+			unless $] >= $minperl;
+		
+		$WriteMakefileArgs{MIN_PERL_VERSION} ||= $minperl
+			if $EUMM >= 6.48;
 	}
 }
 
