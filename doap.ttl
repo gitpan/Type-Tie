@@ -12,9 +12,10 @@
 <http://purl.org/NET/cpan-uri/dist/Type-Tie/project>
 	a                    doap:Project;
 	dc:contributor       <http://purl.org/NET/cpan-uri/person/tobyink>;
+	doap-deps:runtime-recommendation [ doap-deps:on "Hash::FieldHash"^^doap-deps:CpanId ];
 	doap-deps:runtime-requirement [
 		doap-deps:on "Exporter::Tiny 0.026"^^doap-deps:CpanId;
-	], [ doap-deps:on "Hash::FieldHash"^^doap-deps:CpanId ];
+	];
 	doap-deps:test-recommendation [
 		doap-deps:on "MooseX::Types::Moose"^^doap-deps:CpanId;
 	];
@@ -30,7 +31,7 @@
 	doap:maintainer      <http://purl.org/NET/cpan-uri/person/tobyink>;
 	doap:name            "Type-Tie";
 	doap:programming-language "Perl";
-	doap:release         <http://purl.org/NET/cpan-uri/dist/Type-Tie/v_0-001>, <http://purl.org/NET/cpan-uri/dist/Type-Tie/v_0-002>, <http://purl.org/NET/cpan-uri/dist/Type-Tie/v_0-003>, <http://purl.org/NET/cpan-uri/dist/Type-Tie/v_0-004>, <http://purl.org/NET/cpan-uri/dist/Type-Tie/v_0-005>;
+	doap:release         <http://purl.org/NET/cpan-uri/dist/Type-Tie/v_0-001>, <http://purl.org/NET/cpan-uri/dist/Type-Tie/v_0-002>, <http://purl.org/NET/cpan-uri/dist/Type-Tie/v_0-003>, <http://purl.org/NET/cpan-uri/dist/Type-Tie/v_0-004>, <http://purl.org/NET/cpan-uri/dist/Type-Tie/v_0-005>, <http://purl.org/NET/cpan-uri/dist/Type-Tie/v_0-006>;
 	doap:repository      [
 		a doap:GitRepository;
 		doap:browse <https://github.com/tobyink/p5-type-tie>;
@@ -119,6 +120,20 @@
 	doap-changeset:released-by <http://purl.org/NET/cpan-uri/person/tobyink>;
 	doap:file-release    <http://backpan.cpan.org/authors/id/T/TO/TOBYINK/Type-Tie-0.005.tar.gz>;
 	doap:revision        "0.005"^^xsd:string.
+
+<http://purl.org/NET/cpan-uri/dist/Type-Tie/v_0-006>
+	a                    doap:Version;
+	dc:identifier        "Type-Tie-0.006"^^xsd:string;
+	dc:issued            "2013-10-04"^^xsd:date;
+	doap-changeset:changeset [
+		doap-changeset:item [
+			a doap-changeset:Change;
+			rdfs:label "Make Hash::FieldHash optional for Perl >= v5.9.4; use Hash::Util::FieldHash if Hash::FieldHash is unavailable.";
+		];
+	];
+	doap-changeset:released-by <http://purl.org/NET/cpan-uri/person/tobyink>;
+	doap:file-release    <http://backpan.cpan.org/authors/id/T/TO/TOBYINK/Type-Tie-0.006.tar.gz>;
+	doap:revision        "0.006"^^xsd:string.
 
 <http://purl.org/NET/cpan-uri/person/tobyink>
 	a                    foaf:Person;

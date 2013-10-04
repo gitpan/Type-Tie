@@ -6,7 +6,7 @@ my $EUMM = eval( $ExtUtils::MakeMaker::VERSION );
 my $meta = {
   "abstract"       => "tie a variable to a type constraint",
   "author"         => ["Toby Inkster (TOBYINK) <tobyink\@cpan.org>"],
-  "dynamic_config" => 0,
+  "dynamic_config" => 1,
   "generated_by"   => "Dist::Inkt::Profile::TOBYINK version 0.013, CPAN::Meta::Converter version 2.120921",
   "keywords"       => [],
   "license"        => ["perl_5"],
@@ -19,7 +19,8 @@ my $meta = {
   "prereqs"        => {
                         configure => { requires => { "ExtUtils::MakeMaker" => 6.17 } },
                         runtime => {
-                          requires => { "Exporter::Tiny" => 0.026, "Hash::FieldHash" => 0 },
+                          recommends => { "Hash::FieldHash" => 0 },
+                          requires   => { "Exporter::Tiny" => 0.026 },
                         },
                         test => {
                           recommends => { "MooseX::Types::Moose" => 0 },
@@ -27,11 +28,11 @@ my $meta = {
                         },
                       },
   "provides"       => {
-                        "Type::Tie"         => { file => "lib/Type/Tie.pm", version => 0.005 },
-                        "Type::Tie::ARRAY"  => { file => "lib/Type/Tie.pm", version => 0.005 },
-                        "Type::Tie::BASE"   => { file => "lib/Type/Tie.pm", version => 0.005 },
-                        "Type::Tie::HASH"   => { file => "lib/Type/Tie.pm", version => 0.005 },
-                        "Type::Tie::SCALAR" => { file => "lib/Type/Tie.pm", version => 0.005 },
+                        "Type::Tie"         => { file => "lib/Type/Tie.pm", version => 0.006 },
+                        "Type::Tie::ARRAY"  => { file => "lib/Type/Tie.pm", version => 0.006 },
+                        "Type::Tie::BASE"   => { file => "lib/Type/Tie.pm", version => 0.006 },
+                        "Type::Tie::HASH"   => { file => "lib/Type/Tie.pm", version => 0.006 },
+                        "Type::Tie::SCALAR" => { file => "lib/Type/Tie.pm", version => 0.006 },
                       },
   "release_status" => "stable",
   "resources"      => {
@@ -41,10 +42,15 @@ my $meta = {
                         repository   => { type => "git", web => "https://github.com/tobyink/p5-type-tie" },
                         X_identifier => "http://purl.org/NET/cpan-uri/dist/Type-Tie/project",
                       },
-  "version"        => 0.005,
+  "version"        => 0.006,
 };
 
 my %dynamic_config;
+do {
+# Hash::Util::FieldHash was first released with perl v5.9.4
+$meta->{prereqs}{runtime}{requires}{'Hash::FieldHash'} = 0 if $] < 5.009004;
+
+};
 
 my %WriteMakefileArgs = (
 	ABSTRACT   => $meta->{abstract},

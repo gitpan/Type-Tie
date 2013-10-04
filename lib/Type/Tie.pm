@@ -14,7 +14,7 @@ BEGIN
 {
 	package Type::Tie;
 	our $AUTHORITY = 'cpan:TOBYINK';
-	our $VERSION   = '0.005';
+	our $VERSION   = '0.006';
 	our @ISA       = qw( Exporter::Tiny );
 	our @EXPORT    = qw( ttie );
 	
@@ -45,9 +45,15 @@ BEGIN
 {
 	package Type::Tie::BASE;
 	our $AUTHORITY = 'cpan:TOBYINK';
-	our $VERSION   = '0.005';
+	our $VERSION   = '0.006';
 	
-	use Hash::FieldHash qw(fieldhash);
+	BEGIN {
+		my $impl;
+		$impl ||= eval { require Hash::FieldHash;       'Hash::FieldHash' };
+		$impl ||= do   { require Hash::Util::FieldHash; 'Hash::Util::FieldHash' };
+		$impl->import('fieldhash');
+	};
+	
 	fieldhash(my %TYPE);
 	fieldhash(my %COERCE);
 	fieldhash(my %CHECK);
@@ -122,7 +128,7 @@ BEGIN
 {
 	package Type::Tie::ARRAY;
 	our $AUTHORITY = 'cpan:TOBYINK';
-	our $VERSION   = '0.005';
+	our $VERSION   = '0.006';
 	our @ISA       = qw( Tie::StdArray Type::Tie::BASE );
 	
 	sub TIEARRAY
@@ -163,7 +169,7 @@ BEGIN
 {
 	package Type::Tie::HASH;
 	our $AUTHORITY = 'cpan:TOBYINK';
-	our $VERSION   = '0.005';
+	our $VERSION   = '0.006';
 	our @ISA       = qw( Tie::StdHash Type::Tie::BASE );
 	
 	sub TIEHASH
@@ -185,7 +191,7 @@ BEGIN
 {
 	package Type::Tie::SCALAR;
 	our $AUTHORITY = 'cpan:TOBYINK';
-	our $VERSION   = '0.005';
+	our $VERSION   = '0.006';
 	our @ISA       = qw( Tie::StdScalar Type::Tie::BASE );
 	
 	sub TIESCALAR
