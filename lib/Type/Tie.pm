@@ -14,11 +14,11 @@ BEGIN
 {
 	package Type::Tie;
 	our $AUTHORITY = 'cpan:TOBYINK';
-	our $VERSION   = '0.006';
+	our $VERSION   = '0.007';
 	our @ISA       = qw( Exporter::Tiny );
 	our @EXPORT    = qw( ttie );
 	
-	sub ttie (\[$@%]$;@)#>&%*/&<%\$[]^!@;@)
+	sub ttie (\[$@%]@)#>&%*/&<%\$[]^!@;@)
 	{
 		my ($ref, $type, @vals) = @_;
 		
@@ -45,7 +45,7 @@ BEGIN
 {
 	package Type::Tie::BASE;
 	our $AUTHORITY = 'cpan:TOBYINK';
-	our $VERSION   = '0.006';
+	our $VERSION   = '0.007';
 	
 	BEGIN {
 		my $impl;
@@ -128,7 +128,7 @@ BEGIN
 {
 	package Type::Tie::ARRAY;
 	our $AUTHORITY = 'cpan:TOBYINK';
-	our $VERSION   = '0.006';
+	our $VERSION   = '0.007';
 	our @ISA       = qw( Tie::StdArray Type::Tie::BASE );
 	
 	sub TIEARRAY
@@ -169,7 +169,7 @@ BEGIN
 {
 	package Type::Tie::HASH;
 	our $AUTHORITY = 'cpan:TOBYINK';
-	our $VERSION   = '0.006';
+	our $VERSION   = '0.007';
 	our @ISA       = qw( Tie::StdHash Type::Tie::BASE );
 	
 	sub TIEHASH
@@ -191,7 +191,7 @@ BEGIN
 {
 	package Type::Tie::SCALAR;
 	our $AUTHORITY = 'cpan:TOBYINK';
-	our $VERSION   = '0.006';
+	our $VERSION   = '0.007';
 	our @ISA       = qw( Tie::StdScalar Type::Tie::BASE );
 	
 	sub TIESCALAR
@@ -310,6 +310,11 @@ L<Type::Tiny|Type::Tiny::Manual>
 Please report any bugs to
 L<http://rt.cpan.org/Dist/Display.html?Queue=Type-Tie>.
 
+=head1 SUPPORT
+
+B<< IRC: >> support is available through in the I<< #moops >> channel
+on L<irc.perl.org|http://www.irc.perl.org/channels.html>.
+
 =head1 SEE ALSO
 
 L<Type::API>,
@@ -323,7 +328,7 @@ Toby Inkster E<lt>tobyink@cpan.orgE<gt>.
 
 =head1 COPYRIGHT AND LICENCE
 
-This software is copyright (c) 2013 by Toby Inkster.
+This software is copyright (c) 2013-2014 by Toby Inkster.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

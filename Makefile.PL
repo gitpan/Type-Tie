@@ -7,7 +7,7 @@ my $meta = {
   "abstract"       => "tie a variable to a type constraint",
   "author"         => ["Toby Inkster (TOBYINK) <tobyink\@cpan.org>"],
   "dynamic_config" => 1,
-  "generated_by"   => "Dist::Inkt::Profile::TOBYINK version 0.013, CPAN::Meta::Converter version 2.120921",
+  "generated_by"   => "Dist::Inkt::Profile::TOBYINK version 0.014, CPAN::Meta::Converter version 2.120921",
   "keywords"       => [],
   "license"        => ["perl_5"],
   "meta-spec"      => {
@@ -28,11 +28,11 @@ my $meta = {
                         },
                       },
   "provides"       => {
-                        "Type::Tie"         => { file => "lib/Type/Tie.pm", version => 0.006 },
-                        "Type::Tie::ARRAY"  => { file => "lib/Type/Tie.pm", version => 0.006 },
-                        "Type::Tie::BASE"   => { file => "lib/Type/Tie.pm", version => 0.006 },
-                        "Type::Tie::HASH"   => { file => "lib/Type/Tie.pm", version => 0.006 },
-                        "Type::Tie::SCALAR" => { file => "lib/Type/Tie.pm", version => 0.006 },
+                        "Type::Tie"         => { file => "lib/Type/Tie.pm", version => 0.007 },
+                        "Type::Tie::ARRAY"  => { file => "lib/Type/Tie.pm", version => 0.007 },
+                        "Type::Tie::BASE"   => { file => "lib/Type/Tie.pm", version => 0.007 },
+                        "Type::Tie::HASH"   => { file => "lib/Type/Tie.pm", version => 0.007 },
+                        "Type::Tie::SCALAR" => { file => "lib/Type/Tie.pm", version => 0.007 },
                       },
   "release_status" => "stable",
   "resources"      => {
@@ -42,7 +42,7 @@ my $meta = {
                         repository   => { type => "git", web => "https://github.com/tobyink/p5-type-tie" },
                         X_identifier => "http://purl.org/NET/cpan-uri/dist/Type-Tie/project",
                       },
-  "version"        => 0.006,
+  "version"        => 0.007,
 };
 
 my %dynamic_config;
@@ -59,6 +59,7 @@ my %WriteMakefileArgs = (
 	VERSION    => $meta->{version},
 	EXE_FILES  => [ map $_->{file}, values %{ $meta->{x_provides_scripts} || {} } ],
 	NAME       => do { my $n = $meta->{name}; $n =~ s/-/::/g; $n },
+	test       => { TESTS => "t/*.t" },
 	%dynamic_config,
 );
 

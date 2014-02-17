@@ -9,7 +9,7 @@ build_requires:
 configure_requires:
   ExtUtils::MakeMaker: 6.17
 dynamic_config: 1
-generated_by: 'Dist::Inkt::Profile::TOBYINK version 0.013, CPAN::Meta::Converter version 2.120921'
+generated_by: 'Dist::Inkt::Profile::TOBYINK version 0.014, CPAN::Meta::Converter version 2.120921'
 keywords: []
 license: perl
 meta-spec:
@@ -27,19 +27,19 @@ optional_features: {}
 provides:
   Type::Tie:
     file: lib/Type/Tie.pm
-    version: 0.006
+    version: 0.007
   Type::Tie::ARRAY:
     file: lib/Type/Tie.pm
-    version: 0.006
+    version: 0.007
   Type::Tie::BASE:
     file: lib/Type/Tie.pm
-    version: 0.006
+    version: 0.007
   Type::Tie::HASH:
     file: lib/Type/Tie.pm
-    version: 0.006
+    version: 0.007
   Type::Tie::SCALAR:
     file: lib/Type/Tie.pm
-    version: 0.006
+    version: 0.007
 recommends:
   Hash::FieldHash: 0
 requires:
@@ -50,4 +50,4 @@ resources:
   homepage: https://metacpan.org/release/Type-Tie
   license: http://dev.perl.org/licenses/
   repository: https://github.com/tobyink/p5-type-tie
-version: 0.006
+version: 0.007

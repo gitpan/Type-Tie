@@ -4,7 +4,7 @@
       "Toby Inkster (TOBYINK) <tobyink@cpan.org>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "Dist::Inkt::Profile::TOBYINK version 0.013, CPAN::Meta::Converter version 2.120921",
+   "generated_by" : "Dist::Inkt::Profile::TOBYINK version 0.014, CPAN::Meta::Converter version 2.120921",
    "keywords" : [],
    "license" : [
       "perl_5"
@@ -52,23 +52,23 @@
    "provides" : {
       "Type::Tie" : {
          "file" : "lib/Type/Tie.pm",
-         "version" : "0.006"
+         "version" : "0.007"
       },
       "Type::Tie::ARRAY" : {
          "file" : "lib/Type/Tie.pm",
-         "version" : "0.006"
+         "version" : "0.007"
       },
       "Type::Tie::BASE" : {
          "file" : "lib/Type/Tie.pm",
-         "version" : "0.006"
+         "version" : "0.007"
       },
       "Type::Tie::HASH" : {
          "file" : "lib/Type/Tie.pm",
-         "version" : "0.006"
+         "version" : "0.007"
       },
       "Type::Tie::SCALAR" : {
          "file" : "lib/Type/Tie.pm",
-         "version" : "0.006"
+         "version" : "0.007"
       }
    },
    "release_status" : "stable",
@@ -86,5 +86,5 @@
          "web" : "https://github.com/tobyink/p5-type-tie"
       }
    },
-   "version" : "0.006"
+   "version" : "0.007"
 }
