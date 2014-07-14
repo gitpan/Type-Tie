@@ -5,9 +5,9 @@ my $EUMM = eval( $ExtUtils::MakeMaker::VERSION );
 
 my $meta = {
   "abstract"       => "tie a variable to a type constraint",
-  "author"         => ["Toby Inkster (TOBYINK) <tobyink\@cpan.org>"],
+  "author"         => ["Toby Inkster (TOBYINK) <tobyink\@cpan.org>", "unknown"],
   "dynamic_config" => 1,
-  "generated_by"   => "Dist::Inkt::Profile::TOBYINK version 0.014, CPAN::Meta::Converter version 2.120921",
+  "generated_by"   => "Dist::Inkt::Profile::TOBYINK version 0.016, CPAN::Meta::Converter version 2.140640",
   "keywords"       => [],
   "license"        => ["perl_5"],
   "meta-spec"      => {
@@ -23,26 +23,29 @@ my $meta = {
                           requires   => { "Exporter::Tiny" => 0.026 },
                         },
                         test => {
-                          recommends => { "MooseX::Types::Moose" => 0 },
-                          requires   => { "Test::Fatal" => 0, "Test::Requires" => 0, "Types::Standard" => 0.004 },
+                          requires => { "Test::Fatal" => 0, "Test::More" => 0.96, "Test::Requires" => 0 },
                         },
                       },
   "provides"       => {
-                        "Type::Tie"         => { file => "lib/Type/Tie.pm", version => 0.007 },
-                        "Type::Tie::ARRAY"  => { file => "lib/Type/Tie.pm", version => 0.007 },
-                        "Type::Tie::BASE"   => { file => "lib/Type/Tie.pm", version => 0.007 },
-                        "Type::Tie::HASH"   => { file => "lib/Type/Tie.pm", version => 0.007 },
-                        "Type::Tie::SCALAR" => { file => "lib/Type/Tie.pm", version => 0.007 },
+                        "Type::Tie"         => { file => "lib/Type/Tie.pm", version => 0.008 },
+                        "Type::Tie::ARRAY"  => { file => "lib/Type/Tie.pm", version => 0.008 },
+                        "Type::Tie::BASE"   => { file => "lib/Type/Tie.pm", version => 0.008 },
+                        "Type::Tie::HASH"   => { file => "lib/Type/Tie.pm", version => 0.008 },
+                        "Type::Tie::SCALAR" => { file => "lib/Type/Tie.pm", version => 0.008 },
                       },
   "release_status" => "stable",
   "resources"      => {
                         bugtracker   => { web => "http://rt.cpan.org/Dist/Display.html?Queue=Type-Tie" },
                         homepage     => "https://metacpan.org/release/Type-Tie",
                         license      => ["http://dev.perl.org/licenses/"],
-                        repository   => { type => "git", web => "https://github.com/tobyink/p5-type-tie" },
+                        repository   => {
+                                          type => "git",
+                                          url  => "git://github.com/tobyink/p5-type-tie.git",
+                                          web  => "https://github.com/tobyink/p5-type-tie",
+                                        },
                         X_identifier => "http://purl.org/NET/cpan-uri/dist/Type-Tie/project",
                       },
-  "version"        => 0.007,
+  "version"        => 0.008,
 };
 
 my %dynamic_config;

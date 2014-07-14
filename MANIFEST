@@ -17,3 +17,4 @@ lib/Type/Tie.pm
 t/01basic.t
 t/02moosextypes.t
 t/03prototypicalweirdness.t
+t/04nots.t

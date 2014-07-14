@@ -1,6 +1,6 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: Type-Tie
-Upstream-Contact: Toby Inkster (TOBYINK) <tobyink@cpan.org>
+Upstream-Contact:  and Toby Inkster (TOBYINK) <tobyink@cpan.org>
 Source: https://metacpan.org/release/Type-Tie
 
 Files: CONTRIBUTING
@@ -11,18 +11,19 @@ Files: CONTRIBUTING
 Copyright: Unknown
 License: Unknown
 
+Files: README
+ lib/Type/Tie.pm
+ t/01basic.t
+ t/02moosextypes.t
+ t/04nots.t
+Copyright: This software is copyright (c) 2013-2014 by Toby Inkster.
+License: GPL-1.0+ or Artistic-1.0
+
 Files: Changes
  META.json
  META.yml
  doap.ttl
 Copyright: Copyright 2014 Toby Inkster.
-License: GPL-1.0+ or Artistic-1.0
-
-Files: README
- lib/Type/Tie.pm
- t/01basic.t
- t/02moosextypes.t
-Copyright: This software is copyright (c) 2013-2014 by Toby Inkster.
 License: GPL-1.0+ or Artistic-1.0
 
 Files: COPYRIGHT
@@ -31,12 +32,12 @@ Files: COPYRIGHT
 Copyright: None
 License: public-domain
 
-Files: t/03prototypicalweirdness.t
-Copyright: This software is copyright (c) 2014 by Toby Inkster.
-License: GPL-1.0+ or Artistic-1.0
-
 Files: dist.ini
 Copyright: Copyright 2013 Toby Inkster.
+License: GPL-1.0+ or Artistic-1.0
+
+Files: t/03prototypicalweirdness.t
+Copyright: This software is copyright (c) 2014 by Toby Inkster.
 License: GPL-1.0+ or Artistic-1.0
 
 License: Artistic-1.0

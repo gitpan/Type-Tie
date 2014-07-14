@@ -6,6 +6,21 @@ Home page:    <https://metacpan.org/release/Type-Tie>
 Bug tracker:  <http://rt.cpan.org/Dist/Display.html?Queue=Type-Tie>
 Maintainer:   Toby Inkster (TOBYINK) <tobyink@cpan.org>
 
+0.008	2014-07-14
+
+ [ Test Suite ]
+ - Include a test case with a simple local implementation of Type::API.
+
+ [ Packaging ]
+ - Types::Standard and MooseX::Types::Moose are now just listed as
+   'suggested' for testing. (They were 'required' and 'recommended'
+   respectively.)
+
+ [ Other ]
+ - Type::Tie now passes through the type constraint's error message rather
+   than generating its own. It will still generate its own error message if
+   the type constraint object fails to provide a get_message method.
+
 0.007	2014-02-17
 
  [ Bug Fixes ]

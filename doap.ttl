@@ -16,11 +16,14 @@
 	doap-deps:runtime-requirement [
 		doap-deps:on "Exporter::Tiny 0.026"^^doap-deps:CpanId;
 	];
-	doap-deps:test-recommendation [
-		doap-deps:on "MooseX::Types::Moose"^^doap-deps:CpanId;
-	];
-	doap-deps:test-requirement [ doap-deps:on "Test::Fatal"^^doap-deps:CpanId ], [ doap-deps:on "Test::Requires"^^doap-deps:CpanId ], [
+	doap-deps:runtime-suggests [
 		doap-deps:on "Types::Standard 0.004"^^doap-deps:CpanId;
+	];
+	doap-deps:test-requirement [ doap-deps:on "Test::More 0.96"^^doap-deps:CpanId ], [ doap-deps:on "Test::Fatal"^^doap-deps:CpanId ], [ doap-deps:on "Test::Requires"^^doap-deps:CpanId ];
+	doap-deps:test-suggests [
+		doap-deps:on "Types::Standard 0.004"^^doap-deps:CpanId;
+	], [
+		doap-deps:on "MooseX::Types::Moose"^^doap-deps:CpanId;
 	];
 	doap:bug-database    <http://rt.cpan.org/Dist/Display.html?Queue=Type-Tie>;
 	doap:created         "2013-05-05"^^xsd:date;
@@ -31,7 +34,7 @@
 	doap:maintainer      <http://purl.org/NET/cpan-uri/person/tobyink>;
 	doap:name            "Type-Tie";
 	doap:programming-language "Perl";
-	doap:release         <http://purl.org/NET/cpan-uri/dist/Type-Tie/v_0-001>, <http://purl.org/NET/cpan-uri/dist/Type-Tie/v_0-002>, <http://purl.org/NET/cpan-uri/dist/Type-Tie/v_0-003>, <http://purl.org/NET/cpan-uri/dist/Type-Tie/v_0-004>, <http://purl.org/NET/cpan-uri/dist/Type-Tie/v_0-005>, <http://purl.org/NET/cpan-uri/dist/Type-Tie/v_0-006>, <http://purl.org/NET/cpan-uri/dist/Type-Tie/v_0-007>;
+	doap:release         <http://purl.org/NET/cpan-uri/dist/Type-Tie/v_0-001>, <http://purl.org/NET/cpan-uri/dist/Type-Tie/v_0-002>, <http://purl.org/NET/cpan-uri/dist/Type-Tie/v_0-003>, <http://purl.org/NET/cpan-uri/dist/Type-Tie/v_0-004>, <http://purl.org/NET/cpan-uri/dist/Type-Tie/v_0-005>, <http://purl.org/NET/cpan-uri/dist/Type-Tie/v_0-006>, <http://purl.org/NET/cpan-uri/dist/Type-Tie/v_0-007>, <http://purl.org/NET/cpan-uri/dist/Type-Tie/v_0-008>;
 	doap:repository      [
 		a doap:GitRepository;
 		doap:browse <https://github.com/tobyink/p5-type-tie>;
@@ -152,6 +155,26 @@
 	doap-changeset:released-by <http://purl.org/NET/cpan-uri/person/tobyink>;
 	doap:file-release    <http://backpan.cpan.org/authors/id/T/TO/TOBYINK/Type-Tie-0.007.tar.gz>;
 	doap:revision        "0.007"^^xsd:string.
+
+<http://purl.org/NET/cpan-uri/dist/Type-Tie/v_0-008>
+	a                    doap:Version;
+	dc:identifier        "Type-Tie-0.008"^^xsd:string;
+	dc:issued            "2014-07-14"^^xsd:date;
+	doap-changeset:changeset [
+		doap-changeset:item [
+			a doap-changeset:Packaging;
+			rdfs:label "Types::Standard and MooseX::Types::Moose are now just listed as 'suggested' for testing. (They were 'required' and 'recommended' respectively.)";
+		], [
+			a doap-changeset:Tests;
+			rdfs:label "Include a test case with a simple local implementation of Type::API.";
+		], [
+			a doap-changeset:Change;
+			rdfs:label "Type::Tie now passes through the type constraint's error message rather than generating its own. It will still generate its own error message if the type constraint object fails to provide a get_message method.";
+		];
+	];
+	doap-changeset:released-by <http://purl.org/NET/cpan-uri/person/tobyink>;
+	doap:file-release    <http://backpan.cpan.org/authors/id/T/TO/TOBYINK/Type-Tie-0.008.tar.gz>;
+	doap:revision        "0.008"^^xsd:string.
 
 <http://purl.org/NET/cpan-uri/person/haarg>
 	a                    foaf:Person;

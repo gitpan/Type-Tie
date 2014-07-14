@@ -1,10 +1,11 @@
 {
    "abstract" : "tie a variable to a type constraint",
    "author" : [
-      "Toby Inkster (TOBYINK) <tobyink@cpan.org>"
+      "Toby Inkster (TOBYINK) <tobyink@cpan.org>",
+      ""
    ],
    "dynamic_config" : 1,
-   "generated_by" : "Dist::Inkt::Profile::TOBYINK version 0.014, CPAN::Meta::Converter version 2.120921",
+   "generated_by" : "Dist::Inkt::Profile::TOBYINK version 0.016, CPAN::Meta::Converter version 2.140640",
    "keywords" : [],
    "license" : [
       "perl_5"
@@ -39,36 +40,33 @@
          }
       },
       "test" : {
-         "recommends" : {
-            "MooseX::Types::Moose" : "0"
-         },
          "requires" : {
             "Test::Fatal" : "0",
-            "Test::Requires" : "0",
-            "Types::Standard" : "0.004"
+            "Test::More" : "0.96",
+            "Test::Requires" : "0"
          }
       }
    },
    "provides" : {
       "Type::Tie" : {
          "file" : "lib/Type/Tie.pm",
-         "version" : "0.007"
+         "version" : "0.008"
       },
       "Type::Tie::ARRAY" : {
          "file" : "lib/Type/Tie.pm",
-         "version" : "0.007"
+         "version" : "0.008"
       },
       "Type::Tie::BASE" : {
          "file" : "lib/Type/Tie.pm",
-         "version" : "0.007"
+         "version" : "0.008"
       },
       "Type::Tie::HASH" : {
          "file" : "lib/Type/Tie.pm",
-         "version" : "0.007"
+         "version" : "0.008"
       },
       "Type::Tie::SCALAR" : {
          "file" : "lib/Type/Tie.pm",
-         "version" : "0.007"
+         "version" : "0.008"
       }
    },
    "release_status" : "stable",
@@ -83,8 +81,9 @@
       ],
       "repository" : {
          "type" : "git",
+         "url" : "git://github.com/tobyink/p5-type-tie.git",
          "web" : "https://github.com/tobyink/p5-type-tie"
       }
    },
-   "version" : "0.007"
+   "version" : "0.008"
 }

@@ -14,7 +14,7 @@ BEGIN
 {
 	package Type::Tie;
 	our $AUTHORITY = 'cpan:TOBYINK';
-	our $VERSION   = '0.007';
+	our $VERSION   = '0.008';
 	our @ISA       = qw( Exporter::Tiny );
 	our @EXPORT    = qw( ttie );
 	
@@ -45,7 +45,7 @@ BEGIN
 {
 	package Type::Tie::BASE;
 	our $AUTHORITY = 'cpan:TOBYINK';
-	our $VERSION   = '0.007';
+	our $VERSION   = '0.008';
 	
 	BEGIN {
 		my $impl;
@@ -115,8 +115,14 @@ BEGIN
 		
 		my @vals = map {
 			my $val = $coerce ? $coerce->($_) : $_;
-			Carp::croak(sprintf "%s does not meet type constraint %s", _dd($_), $TYPE{$self})
-				unless $check->($val);
+			if (not $check->($val)) {
+				my $type = $TYPE{$self};
+				Carp::croak(
+					$type && $type->can('get_message')
+						? $type->get_message($val)
+						: sprintf("%s does not meet type constraint %s", _dd($_), $type||'Unknown')
+				);
+			}
 			$val;
 		} (my @cp = @_);  # need to copy @_ for Perl < 5.14
 		
@@ -128,7 +134,7 @@ BEGIN
 {
 	package Type::Tie::ARRAY;
 	our $AUTHORITY = 'cpan:TOBYINK';
-	our $VERSION   = '0.007';
+	our $VERSION   = '0.008';
 	our @ISA       = qw( Tie::StdArray Type::Tie::BASE );
 	
 	sub TIEARRAY
@@ -169,7 +175,7 @@ BEGIN
 {
 	package Type::Tie::HASH;
 	our $AUTHORITY = 'cpan:TOBYINK';
-	our $VERSION   = '0.007';
+	our $VERSION   = '0.008';
 	our @ISA       = qw( Tie::StdHash Type::Tie::BASE );
 	
 	sub TIEHASH
@@ -191,7 +197,7 @@ BEGIN
 {
 	package Type::Tie::SCALAR;
 	our $AUTHORITY = 'cpan:TOBYINK';
-	our $VERSION   = '0.007';
+	our $VERSION   = '0.008';
 	our @ISA       = qw( Tie::StdScalar Type::Tie::BASE );
 	
 	sub TIESCALAR
